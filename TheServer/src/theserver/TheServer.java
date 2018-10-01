@@ -53,7 +53,7 @@ public class TheServer {
     }
     
     public ServerSocket getServer() {
-        return server;
+        return this.server;
     }
 
     public void setServer(ServerSocket server) {
@@ -61,7 +61,7 @@ public class TheServer {
     }
 
     public int getPortNumber() {
-        return portNumber;
+        return this.portNumber;
     }
 
     public void setPortNumber(int portNumber) {
@@ -69,14 +69,14 @@ public class TheServer {
     }
     
     public ObjectOutputStream getOutput() {
-        return output;
+        return this.output;
     }
 
     public ObjectInputStream getInput() {
-        return input;
+        return this.input;
     }
 
     public Socket getConnection() {
-        return connection;
+        return this.connection;
     }
 }
