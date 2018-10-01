@@ -11,13 +11,13 @@ public class TheClient {
     private Socket connection;
     private String portNumber;
     
-//    constructor two with host defined
+//    constructor defines ipadress and port number to send messages to
     public TheClient(String host, String port){
         this.serverIP = host;
         this.portNumber = port;
     }
 
-//    attempting to connect to server
+//    attempting to connect to server with details provided in constructor
     public void connectToServer() throws IOException {
         System.out.println("Attempting to connect to server. . .");
         this.connection = new Socket(InetAddress.getByName(this.serverIP), Integer.parseInt(this.portNumber));
@@ -46,15 +46,15 @@ public class TheClient {
     }
     
     public ObjectOutputStream getOutput() {
-        return output;
+        return this.output;
     }
 
     public ObjectInputStream getInput() {
-        return input;
+        return this.input;
     }
 
     public String getServerIP() {
-        return serverIP;
+        return this.serverIP;
     }
 
     public void setServerIP(String serverIP) {
@@ -62,7 +62,7 @@ public class TheClient {
     }
 
     public Socket getConnection() {
-        return connection;
+        return this.connection;
     }
 
     public void setConnection(Socket connection) {
@@ -70,7 +70,7 @@ public class TheClient {
     }
 
     public String getPortNumber() {
-        return portNumber;
+        return this.portNumber;
     }
 
     public void setPortNumber(String portNumber) {
