@@ -18,20 +18,21 @@ public class TheClientProtocol extends JFrame {
     private JTextField userInput;
     private JTextArea response;
 
-// Run this to launch client
+// Run this to launch client module
     public static void main(String[] args){
         TheClientProtocol theClientProtocol = new TheClientProtocol();
         theClientProtocol.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         theClientProtocol.startClient();
     }
 
+//     constructor used to create the GUI and assign a name to it
     private TheClientProtocol() {
         super("The Client");
         createGUI();
-        this.theClient = new TheClient("127.0.0.1", "1234");
+        this.theClient = new TheClient("127.0.0.1", "1234"); // creates an instance of TheClient class and sets the ip adress and port number
     }
     
-    //    code that goes in the constructor and creates the GUI for the client
+    //   Creates the GUI for the client
     private void createGUI(){
         this.userInput = new JTextField();
         this.userInput.setEditable(false);
@@ -43,14 +44,14 @@ public class TheClientProtocol extends JFrame {
             }
         });
         
-        add(this.userInput, BorderLayout.NORTH);
+        add(this.userInput, BorderLayout.SOUTH);
         this.response = new JTextArea();
         add(new JScrollPane(this.response), BorderLayout.CENTER);
         setSize(900,600);
         setVisible(true);
    }
     
-    //    used to attempt to create connections 
+    //    used to attempt to create a connection 
     private void startClient(){
         try {
             this.theClient.connectToServer();
@@ -74,15 +75,10 @@ public class TheClientProtocol extends JFrame {
             try{
                 message = (String) this.theClient.getInput().readObject();
                 showMessageOnClientGUI ("\n" + message);
-                if(message.equals("SERVER: Retrieving personal code")){
-                    allowInput(false);
-                    sendMessageToServer(String.valueOf(new Random().nextInt(9999) + 1) + " - Thank you :D");
-                    allowInput(true);
-                }
             } catch(ClassNotFoundException classNotFoundException){
                 showMessageOnClientGUI("\nERROR: object type unknown.");
             }
-        } while(!message.equals("SERVER: END"));
+        } while(!message.equals("SERVER: END")); //used to terminate the conversation and exit the chat box
     }
 
 //    displays message on screen
