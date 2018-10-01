@@ -12,18 +12,18 @@ public class TheServer {
     private int portNumber;
     private String ipAddress;
     
-//    constructor creates questions required when server is launched
+//    constructor specifies ipaddress and port number to listen on
     public TheServer(String ipAddress, String portNumber){
         this.ipAddress = ipAddress;
         this.portNumber = Integer.parseInt(portNumber);
     }
     
-    //    constructor creates questions required when server is launched
+    //    constructor specifies on port number to listen on (assumes ipaddress is localhost -> 127.0.0.1)
     public TheServer(String portNumber){
         this.portNumber = Integer.parseInt(portNumber);
     }
     
-//wait for connection from client and the the connect to them
+//listens for connection from client and then connects to them
     public void waitForConnection() throws IOException{
         this.server = new ServerSocket(this.portNumber);
         System.out.println("Waiting for client to connect. . .\n");
